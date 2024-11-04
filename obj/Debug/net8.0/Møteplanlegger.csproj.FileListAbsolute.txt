@@ -12,3 +12,4 @@ C:\Users\olli9\VSC\kodehode\Møteplanlegger\obj\Debug\net8.0\refint\Møteplanleg
 C:\Users\olli9\VSC\kodehode\Møteplanlegger\obj\Debug\net8.0\Møteplanlegger.pdb
 C:\Users\olli9\VSC\kodehode\Møteplanlegger\obj\Debug\net8.0\Møteplanlegger.genruntimeconfig.cache
 C:\Users\olli9\VSC\kodehode\Møteplanlegger\obj\Debug\net8.0\ref\Møteplanlegger.dll
+C:\Users\olli9\VSC\kodehode\Møteplanlegger\obj\Debug\net8.0\Møteplanlegger.sourcelink.json

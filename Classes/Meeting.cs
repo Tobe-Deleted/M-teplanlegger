@@ -36,8 +36,21 @@ public class Meeting
         for(int i = 0; i < meetingParticipants; i++) 
         {
             Console.Write("Add a person to the meeting: ");
+            
             people.Add(Console.ReadLine());
+
         }
+        Console.Write("Møtet er klart. Trykk enter for å fortsette.");
+        Console.ReadLine();
+        Console.WriteLine($"Møte: {title}");
+        Console.WriteLine($"Tidspunkt: {time}");
+        Console.WriteLine("Møtedeltagere:");
+        string deltagere = "";
+        foreach (string str in people)
+        {
+            deltagere += $", {str}";
+        }
+        Console.WriteLine(deltagere.Remove(0,2));
 
     }
 }
