@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
-public class Meeting
+public class EditMeeting
 {
     public void CreateMeeting()
     {
@@ -37,20 +37,21 @@ public class Meeting
         {
             Console.Write("Add a person to the meeting: ");
             
-            people.Add(Console.ReadLine());
+            people.Add(Console.ReadLine() ?? "unnamed");
 
         }
         Console.Write("Møtet er klart. Trykk enter for å fortsette.");
         Console.ReadLine();
         Console.WriteLine($"Møte: {title}");
         Console.WriteLine($"Tidspunkt: {time}");
-        Console.WriteLine("Møtedeltagere:");
-        string deltagere = "";
+        Console.Write("Møtedeltagere: ");
+        string participants = "";
         foreach (string str in people)
         {
-            deltagere += $", {str}";
+            participants += $", {str}";
         }
-        Console.WriteLine(deltagere.Remove(0,2));
+        Console.WriteLine(participants.Remove(0,2));
+        //TODO save meeting to json
 
     }
 }
