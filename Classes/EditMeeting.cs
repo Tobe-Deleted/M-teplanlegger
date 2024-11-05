@@ -12,11 +12,11 @@ public class EditMeeting
 
         Console.Write("Velg tittel: ");
         string? title = Console.ReadLine();
-        Console.WriteLine(title); // TODO remove when æøå is fixed. Check out encoding settings
+        Console.WriteLine(title); // TODO: remove when æøå is fixed. Check out encoding settings
         Console.WriteLine($"Møte tittel: {title}");
 
         Console.Write("Velg tidspunkt: ");
-        string? time = Console.ReadLine(); // TODO ?string to TimeDate? Look into TimeDate
+        string? time = Console.ReadLine(); // TODO: string to TimeDate? Look into TimeDate
         Console.WriteLine($"Møte tidspunkt: {time}");
         int meetingParticipants = 0;
         while (meetingParticipants <= 0)
@@ -60,9 +60,9 @@ public class EditMeeting
         //counter++;
         //Console.WriteLine($"{counter}: {title}");
         //TODO: make this work^
-        Console.Write("Velg et møte å se:");
+        Console.Write("Velg et møte å se nærmere på:");
         string viewChoice = Console.ReadLine() ?? "1";
-        //TODO: print out Meeting[viewChoice + 1]
+        //TODO: print out Meeting[viewChoice - 1]
     }
 
     public void ChangeMeeting()
