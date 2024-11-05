@@ -2,7 +2,6 @@ using System.Net.Mail;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Text.Json;
-using Newtonsoft.json; // TODO: Find alternative to newtonsoft.json
 
 namespace MeetingManager.Data
 {
@@ -16,12 +15,12 @@ namespace MeetingManager.Data
                 return new List<Meetings>();
 
             string json = File.ReadAllText(filepath);
-            return JsonConvert.DeserializeObject<List<Meetings>>(json) ?? new List<Meetings>();
+            return JsonConvert.DeserializeObject<List<Meetings>>(json) ?? new List<Meetings>();//funker ikke uten NuGet
         }
 
         public void SaveMeeting(List<Meetings> meetings)
         {
-            string json = JsonConvert.SerializeObject(meetings, Formatting.Intended);
+            string json = jsonSerializer.Serialize(meetings);//funker ikke uten NuGet
             File.WriteAllText(filepath, json);
         }
     }
