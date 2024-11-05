@@ -51,7 +51,28 @@ public class EditMeeting
             participants += $", {str}";
         }
         Console.WriteLine(participants.Remove(0,2));
-        //TODO save meeting to json
-
     }
+    
+    public void ViewMeetings(int counter)
+    {
+        Console.WriteLine("Møter:");
+        //foreach (title in Meetings.Title) 
+        //counter++;
+        //Console.WriteLine($"{counter}: {title}");
+        //TODO: make this work^
+        Console.Write("Velg et møte å se:");
+        string viewChoice = Console.ReadLine() ?? "1";
+        //TODO: print out Meeting[viewChoice + 1]
+    }
+
+    public void ChangeMeeting()
+    {
+        //TODO: set up Meeting edit
+    }
+
+    public void DeleteMeeting()
+    {
+        //TODO: set up delete
+    }
+        //TODO save meeting to json
 }

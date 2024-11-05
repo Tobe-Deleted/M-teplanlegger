@@ -13,6 +13,7 @@ class Program
         string menuChoice = Console.ReadLine() ?? "0";
         if (menuChoice == "1" || menuChoice.ToLower() == "nytt møte")
             emt.CreateMeeting();
-        
+        if (menuChoice == "2" || menuChoice.ToLower() == "Se alle møter")
+            emt.ViewMeetings(0);
     }
 }
