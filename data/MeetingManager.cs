@@ -22,7 +22,7 @@ namespace MeetingManager.Data
             }
             string meetingsJson = File.ReadAllText(filepath);
             Meetings? test = JsonSerializer.Deserialize<Meetings>(meetingsJson);
-            Console.WriteLine(test.Title);
+            Console.WriteLine($"{test.Title} has been saved");
             return new List<Meetings>();
         }
     }

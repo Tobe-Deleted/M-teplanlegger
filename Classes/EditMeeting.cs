@@ -13,7 +13,6 @@ public class EditMeeting
 
         Console.Write("Velg tittel: ");
         string? title = Console.ReadLine();
-        Console.WriteLine(title); // TODO: remove when æøå is fixed. Check out encoding settings
         Console.WriteLine($"Møte tittel: {title}");
 
         Console.Write("Velg tidspunkt: ");
@@ -42,7 +41,7 @@ public class EditMeeting
 
         }
         Console.Write("Møtet er klart. Trykk enter for å fortsette.");
-        Console.ReadLine();
+        Console.ReadKey();
         Console.WriteLine($"Møte: {title}");
         Console.WriteLine($"Tidspunkt: {time}");
         Console.Write("Møtedeltagere: ");
@@ -68,13 +67,19 @@ public class EditMeeting
     
     public void ViewMeetings(int counter)
     {
+        SaveLoadMeeting SLM = new SaveLoadMeeting();
+        var meetings = SLM.LoadMeeting();
+        int choiceCounter = 0;
         Console.WriteLine("Møter:");
-        //foreach (title in Meetings.Title) 
-        //counter++;
-        //Console.WriteLine($"{counter}: {title}");
-        //TODO: make this work^
+        foreach (var meeting in meetings)
+        {
+            choiceCounter++;
+            Console.WriteLine($"{choiceCounter}: {meeting.Title}");
+        }
+        
         Console.Write("Velg et møte å se nærmere på:");
         string viewChoice = Console.ReadLine() ?? "No input";
+        //var 
         //TODO: print out Meeting[viewChoice - 1]
     }
 
