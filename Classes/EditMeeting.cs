@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
+using MeetingManager.Data;
 
 public class EditMeeting
 {
@@ -58,6 +59,11 @@ public class EditMeeting
             Time = time,
             People = people
         };
+
+        SaveLoadMeeting SLM = new SaveLoadMeeting();
+        var meeting = SLM.LoadMeeting();
+        meeting.Add(mts);
+        SLM.SaveMeeting(meeting);
     }
     
     public void ViewMeetings(int counter)
@@ -68,7 +74,7 @@ public class EditMeeting
         //Console.WriteLine($"{counter}: {title}");
         //TODO: make this work^
         Console.Write("Velg et møte å se nærmere på:");
-        string viewChoice = Console.ReadLine() ?? "1";
+        string viewChoice = Console.ReadLine() ?? "No input";
         //TODO: print out Meeting[viewChoice - 1]
     }
 
