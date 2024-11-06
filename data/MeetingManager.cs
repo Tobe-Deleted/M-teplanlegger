@@ -1,5 +1,4 @@
 using System.Net.Mail;
-using System.Text.Json.Serialization;
 using System.Xml;
 using System.Text.Json;
 
@@ -9,18 +8,18 @@ namespace MeetingManager.Data
     {
         private readonly string filepath = "data/meetings.json";
 
-        public List<Meetings> LoadMeeting()
+        /*public List<Meetings> LoadMeeting()
         {
             if (!File.Exists(filepath))
                 return new List<Meetings>();
 
             string json = File.ReadAllText(filepath);
-            return JsonConvert.DeserializeObject<List<Meetings>>(json) ?? new List<Meetings>();//funker ikke uten NuGet
-        }
+            return 
+        }*/
 
         public void SaveMeeting(List<Meetings> meetings)
         {
-            string json = jsonSerializer.Serialize(meetings);//funker ikke uten NuGet
+            string json = JsonSerializer.Serialize(meetings);
             File.WriteAllText(filepath, json);
         }
     }

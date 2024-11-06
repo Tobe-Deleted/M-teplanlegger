@@ -51,6 +51,13 @@ public class EditMeeting
             participants += $", {str}";
         }
         Console.WriteLine(participants.Remove(0,2));
+
+        Meetings mts = new Meetings()
+        {
+            Title = title,
+            Time = time,
+            People = people
+        };
     }
     
     public void ViewMeetings(int counter)
