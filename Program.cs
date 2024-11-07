@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Møteplanlegger v0.2");
+        Console.WriteLine("Møteplanlegger v0.3");
         EditMeeting emt = new EditMeeting(); //se classes
         bool exit = false;
         while (!exit)

@@ -131,6 +131,7 @@ public class EditMeeting
                         case ConsoleKey.D1:
                             break;
                         case ConsoleKey.D2:
+                            //ChangeMeeting(Convert.ToInt16(viewChoice)-49);
                             break;
                         case ConsoleKey.D3:
                             DeleteMeeting(Convert.ToInt16(viewChoice)-49);
@@ -146,8 +147,9 @@ public class EditMeeting
         }
     }
 
-    public void ChangeMeeting()
+    public void ChangeMeeting(int indexValue)
     {
+        SaveLoadMeeting SLM = new SaveLoadMeeting();
         //TODO: set up Meeting edit
     }
 
