@@ -6,11 +6,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Møteplanlegger v0.1");
+        Console.WriteLine("Møteplanlegger v0.2");
         EditMeeting emt = new EditMeeting();
         bool exit = false;
         while (!exit)
         {
+            Console.Clear();
             Console.WriteLine("Velg handling: ");
             Console.WriteLine("1. Lag nytt møte");
             Console.WriteLine("2. Se eksisterende møter");
