@@ -7,15 +7,15 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Møteplanlegger v0.2");
-        EditMeeting emt = new EditMeeting();
+        EditMeeting emt = new EditMeeting(); //se classes
         bool exit = false;
         while (!exit)
         {
             Console.Clear();
             Console.WriteLine("Velg handling: ");
-            Console.WriteLine("1. Lag nytt møte");
-            Console.WriteLine("2. Se eksisterende møter");
-            Console.WriteLine("0. For å avslutte");
+            Console.WriteLine("1. Nytt møte");
+            Console.WriteLine("2. Møteoversikt");
+            Console.WriteLine("0. Avslutt");
 
             string menuChoice = Console.ReadLine() ?? "0";
             switch(menuChoice)

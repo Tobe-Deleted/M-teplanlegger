@@ -1,6 +1,8 @@
 //using System.Text.Json;
 using System;
+using System.Collections;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using MeetingManager.Data;
@@ -56,14 +58,14 @@ public class EditMeeting
         Console.WriteLine(participants.Remove(0,2));
         Console.WriteLine();
 
-        Meetings mts = new Meetings()
+        Meetings mts = new Meetings()//se models
         {
             Title = title,
             Time = time,
             People = people
         };
 
-        SaveLoadMeeting SLM = new SaveLoadMeeting();
+        SaveLoadMeeting SLM = new SaveLoadMeeting();//se data
         var meeting = SLM.LoadMeeting();
         meeting.Add(mts);
         SLM.SaveMeeting(meeting);
@@ -74,34 +76,56 @@ public class EditMeeting
     
     public void ViewMeetings()
     {
-        Console.Clear();
-        SaveLoadMeeting SLM = new SaveLoadMeeting();
-        var meetings = SLM.LoadMeeting();
-        int counter = 0;
-        string participants = "";
-        Console.WriteLine("Alle eskisterende møter:");
-        foreach (var meeting in meetings)
+        bool exit = false;
+        while(!exit)
         {
-            counter++;
-            Console.WriteLine($"{counter}: {meeting.Title}");
-        }
-        
-        Console.Write("Velg et møte(nr) å se nærmere på:");
-        string viewChoice = Console.ReadLine() ?? "Invalid input";//TODO: parse input
-        Console.Clear();
-        if(Convert.ToInt16(viewChoice) <= meetings.Count())
-        {
-            Console.WriteLine($"Tittel: {meetings[Convert.ToInt16(viewChoice) -1].Title}");
-            Console.WriteLine($"Tidspunkt: {meetings[Convert.ToInt16(viewChoice) -1].Time}");
-            foreach(string person in meetings[Convert.ToInt16(viewChoice) -1].People)
-            //TODO: fiks. Blir ikke printet. Blir lagret.
+            Console.Clear();
+            SaveLoadMeeting SLM = new SaveLoadMeeting();//se data
+            var meetings = SLM.LoadMeeting();
+            int counter = 0;
+            string participants = "";
+            Console.WriteLine("Møteoversikt:");
+            foreach (var meeting in meetings)
             {
-                participants += $", {person}";
+                counter++;
+                Console.WriteLine($"{counter}: {meeting.Title}");
             }
-            Console.WriteLine($"Møtedeltagere: {participants.Remove(0,2)}");
-            Console.WriteLine();
-            Console.WriteLine("Trykk en knapp for å gå tilbake til meny");
-            Console.ReadKey();
+            
+            Console.Write("Velg et møte(nr) å se nærmere på:");
+            string viewChoice = Console.ReadLine() ?? "Invalid input";//TODO: parse input
+            Console.Clear();
+            Console.WriteLine("---------------------------------------------------------------------------------------");
+            if(Convert.ToInt16(viewChoice) <= meetings.Count())
+            {
+                Console.WriteLine($"Tittel: {meetings[Convert.ToInt16(viewChoice) -1].Title}");
+                Console.WriteLine($"Tidspunkt: {meetings[Convert.ToInt16(viewChoice) -1].Time}");
+                foreach(string person in meetings[Convert.ToInt16(viewChoice) -1].People)
+                {
+                    participants += $", {person}";
+                }
+                Console.WriteLine($"Møtedeltagere: {participants.Remove(0,2)}");
+                Console.WriteLine("---------------------------------------------------------------------------------------");
+                Console.ReadKey();
+                Console.WriteLine("Velg handling:");
+                Console.WriteLine("1. Gå tilbake til Møteoversikt");
+                Console.WriteLine("2. Endre møte(Out of order)");//TODO: fjern () når editMeeting er ferdig
+                Console.WriteLine("3. Slett møte(Out of order)");//TODO: fjern () når editMeeting er ferdig
+                Console.Write("0. Gå tilbake til hovedmeny");
+                ConsoleKey response = Console.ReadKey(false).Key;  
+                switch(response)
+                {
+                    case ConsoleKey.D1:
+                        break;
+                    case ConsoleKey.D2:
+                        break;
+                    case ConsoleKey.D3:
+                        break;
+                    case ConsoleKey.D0:
+                        exit = true;
+                        break;
+                }
+
+            }
         }
     }
 
@@ -114,5 +138,4 @@ public class EditMeeting
     {
         //TODO: set up delete
     }
-        //TODO save meeting to json
 }
