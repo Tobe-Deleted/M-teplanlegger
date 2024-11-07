@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using MeetingManager.Data;
@@ -12,6 +13,15 @@ public class EditMeeting
     public void CreateMeeting()
     {
         Console.Clear();
+        SaveLoadMeeting SLM = new SaveLoadMeeting();//se data
+        var meeting = SLM.LoadMeeting();
+
+        if (meeting.Count() > 8)
+        {
+            Console.WriteLine("For mange møter lagret.");
+        }
+        else
+        {
         Console.WriteLine("Lag nytt møte:");
 
         Console.Write("Velg tittel: ");
@@ -65,12 +75,11 @@ public class EditMeeting
             People = people
         };
 
-        SaveLoadMeeting SLM = new SaveLoadMeeting();//se data
-        var meeting = SLM.LoadMeeting();
         meeting.Add(mts);
         SLM.SaveMeeting(meeting);
 
         Console.WriteLine("Møtet er lagret. Trykk en knapp for å fortsette");
+        }
         Console.ReadKey();
     }
     
@@ -84,12 +93,12 @@ public class EditMeeting
             var meetings = SLM.LoadMeeting();
             int counter = 0;
             string participants = "";
+            Console.WriteLine("Møteoversikt:");
             foreach (var meeting in meetings)
             {
                 counter++;
                 Console.WriteLine($"{counter}: {meeting.Title}");
             }
-            Console.WriteLine("Møteoversikt:");
             Console.Write("Velg et møte eller 0 for å gå tilbake: ");
 
             ConsoleKey viewChoice = Console.ReadKey().Key;
@@ -109,22 +118,27 @@ public class EditMeeting
                 Console.ReadKey();
                 Console.WriteLine();
                 Console.WriteLine("Velg handling:");
-                Console.WriteLine("1. Gå tilbake til Møteoversikt");
+                Console.WriteLine("1. Gå tilbake");
                 Console.WriteLine("2. Endre møte(Out of order)");//TODO: fjern () når ChangeMeeting er ferdig
-                Console.WriteLine("3. Slett møte(Out of order)");//TODO: fjern () når DeleteMeeting er ferdig
+                Console.WriteLine("3. Slett møte");
                 Console.Write("0. Gå tilbake til hovedmeny");
-                ConsoleKey response = Console.ReadKey(false).Key;  
-                switch(response)
+                ConsoleKey response = 0;
+                while (Convert.ToInt16(response) < 48 || Convert.ToInt16(response) > 51)// increase if more options are added 48 = 0 & 51 = 3
                 {
-                    case ConsoleKey.D1:
-                        break;
-                    case ConsoleKey.D2:
-                        break;
-                    case ConsoleKey.D3:
-                        break;
-                    case ConsoleKey.D0:
-                        exit = true;
-                        break;
+                    response = Console.ReadKey(false).Key;
+                    switch(response)
+                    {
+                        case ConsoleKey.D1:
+                            break;
+                        case ConsoleKey.D2:
+                            break;
+                        case ConsoleKey.D3:
+                            DeleteMeeting(Convert.ToInt16(viewChoice)-49);
+                            break;
+                        case ConsoleKey.D0:
+                            exit = true;
+                            break;
+                    }
                 }
 
             }
@@ -137,8 +151,11 @@ public class EditMeeting
         //TODO: set up Meeting edit
     }
 
-    public void DeleteMeeting()
+    public void DeleteMeeting(int indexValue)
     {
-        //TODO: set up delete
+        SaveLoadMeeting SLM = new SaveLoadMeeting();
+        var meetings = SLM.LoadMeeting();
+        meetings.Remove(meetings[indexValue]);
+        SLM.SaveMeeting(meetings);
     }
 }
