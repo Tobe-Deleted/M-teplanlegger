@@ -14,16 +14,10 @@ namespace MeetingManager.Data
             File.WriteAllText(filepath, json);
         }
 
-        public List<Meetings> LoadMeeting()//TODO: endre vekk fra list? 
-        {
-            if (!File.Exists(filepath))
-            {
-                return new List<Meetings>();
-            }
-            string meetingsJson = File.ReadAllText(filepath);
-            Meetings? test = JsonSerializer.Deserialize<Meetings>(meetingsJson);
-            Console.WriteLine($"{test.Title} has been saved");
-            return new List<Meetings>();
+        public List<Meetings> LoadMeeting()
+        { 
+            return JsonSerializer.Deserialize<List<Meetings>>(File.ReadAllText(filepath)) 
+                    ?? new List<Meetings>();
         }
     }
 }
