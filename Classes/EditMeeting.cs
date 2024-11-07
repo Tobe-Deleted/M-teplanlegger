@@ -12,7 +12,7 @@ public class EditMeeting
     public void CreateMeeting()
     {
         Console.Clear();
-        Console.WriteLine("Lag nytt møte valgt");
+        Console.WriteLine("Lag nytt møte:");
 
         Console.Write("Velg tittel: ");
         string? title = Console.ReadLine();
@@ -92,7 +92,7 @@ public class EditMeeting
             }
             
             Console.Write("Velg et møte(nr) å se nærmere på:");
-            string viewChoice = Console.ReadLine() ?? "Invalid input";//TODO: parse input
+            string viewChoice = Console.ReadLine() ?? "0";//TODO: parse input
             Console.Clear();
             Console.WriteLine("---------------------------------------------------------------------------------------");
             if(Convert.ToInt16(viewChoice) <= meetings.Count())

@@ -17,17 +17,17 @@ class Program
             Console.WriteLine("2. Møteoversikt");
             Console.WriteLine("0. Avslutt");
 
-            string menuChoice = Console.ReadLine() ?? "0";
+            ConsoleKey menuChoice = Console.ReadKey().Key;
             switch(menuChoice)
             {
-                case "0":
+                case ConsoleKey.D0:
                     Console.Clear();
                     exit = true;
                     break;
-                case "1":
+                case ConsoleKey.D1:
                     emt.CreateMeeting();
                     break;
-                case "2":
+                case ConsoleKey.D2:
                     emt.ViewMeetings();
                     break;
                 default:
