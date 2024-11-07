@@ -65,22 +65,31 @@ public class EditMeeting
         SLM.SaveMeeting(meeting);
     }
     
-    public void ViewMeetings(int counter)
+    public void ViewMeetings()
     {
         SaveLoadMeeting SLM = new SaveLoadMeeting();
         var meetings = SLM.LoadMeeting();
-        int choiceCounter = 0;
-        Console.WriteLine("Møter:");
+        int counter = 0;
+        string participants = "";
+        Console.WriteLine("Alle eskisterende møter:");
         foreach (var meeting in meetings)
         {
-            choiceCounter++;
-            Console.WriteLine($"{choiceCounter}: {meeting.Title}");
+            counter++;
+            Console.WriteLine($"{counter}: {meeting.Title}");
         }
         
-        Console.Write("Velg et møte å se nærmere på:");
-        string viewChoice = Console.ReadLine() ?? "No input";
-        //var 
-        //TODO: print out Meeting[viewChoice - 1]
+        Console.Write("Velg et møte(nr) å se nærmere på:");
+        string viewChoice = Console.ReadLine() ?? "Invalid input";//TODO: parse input
+        if(Convert.ToInt16(viewChoice) <= meetings.Count())
+        {
+            Console.WriteLine($"{meetings[Convert.ToInt16(viewChoice) -1].Title}");
+            Console.WriteLine($"{meetings[Convert.ToInt16(viewChoice) -1].Time}");
+            foreach(string person in meetings[Convert.ToInt16(viewChoice) -1].People)//TODO: fiks. Blir ikke printet. Lagres de?
+            {
+                participants += $", {person}";
+            }
+            Console.ReadKey();
+        }
     }
 
     public void ChangeMeeting()
