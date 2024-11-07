@@ -1,22 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Olive\\Documents\\kodehode\\M-teplanlegger\\Møteplanlegger.csproj": {}
+    "C:\\Users\\olli9\\VSC\\kodehode\\Møteplanlegger\\Møteplanlegger.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Olive\\Documents\\kodehode\\M-teplanlegger\\Møteplanlegger.csproj": {
+    "C:\\Users\\olli9\\VSC\\kodehode\\Møteplanlegger\\Møteplanlegger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Olive\\Documents\\kodehode\\M-teplanlegger\\Møteplanlegger.csproj",
+        "projectUniqueName": "C:\\Users\\olli9\\VSC\\kodehode\\Møteplanlegger\\Møteplanlegger.csproj",
         "projectName": "Møteplanlegger",
-        "projectPath": "C:\\Users\\Olive\\Documents\\kodehode\\M-teplanlegger\\Møteplanlegger.csproj",
-        "packagesPath": "C:\\Users\\Olive\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Olive\\Documents\\kodehode\\M-teplanlegger\\obj\\",
+        "projectPath": "C:\\Users\\olli9\\VSC\\kodehode\\Møteplanlegger\\Møteplanlegger.csproj",
+        "packagesPath": "C:\\Users\\olli9\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\olli9\\VSC\\kodehode\\Møteplanlegger\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Olive\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\olli9\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
-        "originalTargetFrameworks": ["net8.0"],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -27,7 +29,9 @@
           }
         },
         "warningProperties": {
-          "warnAsError": ["NU1605"]
+          "warnAsError": [
+            "NU1605"
+          ]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",

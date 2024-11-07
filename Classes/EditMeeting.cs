@@ -84,32 +84,34 @@ public class EditMeeting
             var meetings = SLM.LoadMeeting();
             int counter = 0;
             string participants = "";
-            Console.WriteLine("Møteoversikt:");
             foreach (var meeting in meetings)
             {
                 counter++;
                 Console.WriteLine($"{counter}: {meeting.Title}");
             }
-            
-            Console.Write("Velg et møte(nr) å se nærmere på:");
-            string viewChoice = Console.ReadLine() ?? "0";//TODO: parse input
+            Console.WriteLine("Møteoversikt:");
+            Console.Write("Velg et møte eller 0 for å gå tilbake: ");
+
+            ConsoleKey viewChoice = Console.ReadKey().Key;
+            if (viewChoice == ConsoleKey.D0)break;
             Console.Clear();
             Console.WriteLine("---------------------------------------------------------------------------------------");
-            if(Convert.ToInt16(viewChoice) <= meetings.Count())
+            if(Convert.ToInt16(viewChoice) -48 <= meetings.Count() && Convert.ToInt16(viewChoice) -48 > 0)
             {
-                Console.WriteLine($"Tittel: {meetings[Convert.ToInt16(viewChoice) -1].Title}");
-                Console.WriteLine($"Tidspunkt: {meetings[Convert.ToInt16(viewChoice) -1].Time}");
-                foreach(string person in meetings[Convert.ToInt16(viewChoice) -1].People)
+                Console.WriteLine($"Tittel: {meetings[Convert.ToInt16(viewChoice) -49].Title}");
+                Console.WriteLine($"Tidspunkt: {meetings[Convert.ToInt16(viewChoice) -49].Time}");
+                foreach(string person in meetings[Convert.ToInt16(viewChoice) -49].People)
                 {
                     participants += $", {person}";
                 }
                 Console.WriteLine($"Møtedeltagere: {participants.Remove(0,2)}");
                 Console.WriteLine("---------------------------------------------------------------------------------------");
                 Console.ReadKey();
+                Console.WriteLine();
                 Console.WriteLine("Velg handling:");
                 Console.WriteLine("1. Gå tilbake til Møteoversikt");
-                Console.WriteLine("2. Endre møte(Out of order)");//TODO: fjern () når editMeeting er ferdig
-                Console.WriteLine("3. Slett møte(Out of order)");//TODO: fjern () når editMeeting er ferdig
+                Console.WriteLine("2. Endre møte(Out of order)");//TODO: fjern () når ChangeMeeting er ferdig
+                Console.WriteLine("3. Slett møte(Out of order)");//TODO: fjern () når DeleteMeeting er ferdig
                 Console.Write("0. Gå tilbake til hovedmeny");
                 ConsoleKey response = Console.ReadKey(false).Key;  
                 switch(response)
@@ -126,6 +128,7 @@ public class EditMeeting
                 }
 
             }
+            else Console.WriteLine("Invalid choice");
         }
     }
 

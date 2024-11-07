@@ -31,7 +31,7 @@ class Program
                     emt.ViewMeetings();
                     break;
                 default:
-                    Console.WriteLine($"Invalid menu choice press any key to try again./n");
+                    Console.WriteLine($"Invalid menu choice press any key to try again.");
                     Console.ReadKey();
                     break;
             }
