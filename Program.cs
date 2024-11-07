@@ -21,6 +21,7 @@ class Program
             switch(menuChoice)
             {
                 case "0":
+                    Console.Clear();
                     exit = true;
                     break;
                 case "1":

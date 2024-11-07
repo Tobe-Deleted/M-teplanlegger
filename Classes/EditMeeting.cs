@@ -91,12 +91,14 @@ public class EditMeeting
         Console.Clear();
         if(Convert.ToInt16(viewChoice) <= meetings.Count())
         {
-            Console.WriteLine($"{meetings[Convert.ToInt16(viewChoice) -1].Title}");
-            Console.WriteLine($"{meetings[Convert.ToInt16(viewChoice) -1].Time}");
-            foreach(string person in meetings[Convert.ToInt16(viewChoice) -1].People)//TODO: fiks. Blir ikke printet. Lagres de?
+            Console.WriteLine($"Tittel: {meetings[Convert.ToInt16(viewChoice) -1].Title}");
+            Console.WriteLine($"Tidspunkt: {meetings[Convert.ToInt16(viewChoice) -1].Time}");
+            foreach(string person in meetings[Convert.ToInt16(viewChoice) -1].People)
+            //TODO: fiks. Blir ikke printet. Blir lagret.
             {
                 participants += $", {person}";
             }
+            Console.WriteLine($"Møtedeltagere: {participants.Remove(0,2)}");
             Console.WriteLine();
             Console.WriteLine("Trykk en knapp for å gå tilbake til meny");
             Console.ReadKey();
