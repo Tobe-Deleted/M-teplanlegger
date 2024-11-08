@@ -6,12 +6,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Møteplanlegger v0.3");
         EditMeeting emt = new EditMeeting(); //se classes
         bool exit = false;
         while (!exit)
         {
             Console.Clear();
+            Console.WriteLine("Møteplanlegger v0.3");
             Console.WriteLine("Velg handling: ");
             Console.WriteLine("1. Nytt møte");
             Console.WriteLine("2. Møteoversikt");
@@ -31,7 +31,6 @@ class Program
                     emt.ViewMeetings();
                     break;
                 default:
-                    Console.WriteLine($"Invalid menu choice press any key to try again.");
                     Console.ReadKey();
                     break;
             }
