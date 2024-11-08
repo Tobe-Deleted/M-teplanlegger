@@ -9,7 +9,7 @@ using System.Text;
 using System.Globalization;
 using MeetingManager.Data;
 
-public class EditMeeting
+public class EditMeeting : IEditMeeting
 {
     public void CreateMeeting()
     {
