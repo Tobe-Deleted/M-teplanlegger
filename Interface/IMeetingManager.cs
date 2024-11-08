@@ -1,4 +1,4 @@
-interface IMeetingManager
+interface ISaveLoadMeeting
 {
     /// <summary>
     /// Saves the input to meetings.json

@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace MeetingManager.Data
 {
-    public class SaveLoadMeeting
+    public class SaveLoadMeeting : ISaveLoadMeeting
     {
         private readonly string filepath = "data/meetings.json";
 
